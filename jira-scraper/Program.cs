@@ -36,7 +36,6 @@ namespace jiratesting
                          orderby i.Created
                          select i;
 
-            //Console.WriteLine(issues.Count());
             List<Issue> issueList = new List<Issue>();
 			List<string> rowsInCsv = new List<string>();
 			rowsInCsv.Add("Project,Issue Key,Assignee,Date Created,Week Beginning,Due Date,Affects Versions,Fix Versions,Priority,Status,Summary,Reporter");
