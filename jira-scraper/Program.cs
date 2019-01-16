@@ -29,10 +29,12 @@ namespace jiratesting
             // create a connection to JIRA using the Rest client
 			Jira jira = Jira.CreateRestClient("<url>", "<user>", "<password>");
 
+			Console.WriteLine("Connected to JIRA");
+
             // use LINQ syntax to retrieve issues
             jira.Issues.MaxIssuesPerRequest = int.MaxValue;
             var issues = from i in jira.Issues.Queryable
-                         where i.Project == "<key>" //the Jira project key
+                         where i.Project == args[0] //the Jira project key as a command line argument
                          orderby i.Created
                          select i;
 
@@ -102,6 +104,7 @@ namespace jiratesting
 			string csv = String.Join(",\n", rowsInCsv);
 
 			File.WriteAllText("JiraIssues.csv", csv);
+			Console.WriteLine("Done");
         }
     }
 
